@@ -1,6 +1,10 @@
 const { ethers } = require("ethers")
 
-const provider = ethers.providers.getDefaultProvider('sepolia')
+//custom provider
+//const provider = new ethers.providers.JsonRpcProvider('http://localhost:7545')
+
+//default provider 
+const provider = new ethers.providers.getDefaultProvider('sepolia')
 
 const storeContractAddress = '0x5c9a271f51e3F9854b3D079A5b731d4c865FA18D'
 
@@ -41,7 +45,7 @@ const constractReads = 'constractReads'
 const constractWrites = 'constractWrites'
 
 const main = ()=> {
-   const op = constractReads
+   const op = blockchainReads
         switch(op) {
             case 'blockchainReads': 
                 blockchainReadsFunc()
@@ -62,7 +66,7 @@ const blockchainReadsFunc = async () => {
     const blockNumber = await provider.getBlockNumber()
     console.log('blockNumber', blockNumber)
 
-    const myBalance = await provider.getBalance('0xeEB5fce994AaF685D0D396484e7943ba5A06bfd6')
+    const myBalance = await provider.getBalance('0x817a9A677D45e89F60398bA61A9855019EDD3956')
     console.log('myBalance', myBalance.toString(), ethers.utils.formatEther( myBalance.toString()) )
 }
 
